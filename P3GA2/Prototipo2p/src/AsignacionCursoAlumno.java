@@ -206,6 +206,21 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
+        if ( txt_codigocarrera.getText().isEmpty() || txt_codigosede.getText().isEmpty() || txt_codigojornada.getText().isEmpty() || txt_codigoseccion.getText().isEmpty() || txt_codigoaula.getText().isEmpty() || txt_codigocurso.getText().isEmpty() || txt_carnet.getText().isEmpty() || txt_nota.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codigocarrera.setText("");
+            txt_codigosede.setText("");
+            txt_codigojornada.setText("");
+            txt_codigoseccion.setText("");
+            txt_codigoaula.setText("");
+            txt_codigocurso.setText("");
+            txt_carnet.setText("");
+            txt_nota.setText("");
+            
+        }
+        else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosalumnos values(?,?,?,?,?,?,?,?)");
@@ -230,8 +245,10 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             txt_nota.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
+            label_status.setText("Error al registrar");
         }
+        
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

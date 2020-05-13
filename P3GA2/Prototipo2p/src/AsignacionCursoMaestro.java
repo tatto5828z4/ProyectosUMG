@@ -192,6 +192,20 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
+        if ( txt_codcarrera.getText().isEmpty() || txt_codsede.getText().isEmpty() || txt_codjornada.getText().isEmpty() || txt_codseccion.getText().isEmpty() || txt_codaula.getText().isEmpty() || txt_codcurso.getText().isEmpty() || txt_codmaestro.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codcarrera.setText("");
+            txt_codsede.setText("");
+            txt_codjornada.setText("");
+            txt_codseccion.setText("");
+            txt_codaula.setText("");
+            txt_codcurso.setText("");
+            txt_codmaestro.setText("");
+            
+        }else{
+        
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosmastros values(?,?,?,?,?,?,?)");
@@ -214,7 +228,9 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             txt_codmaestro.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
+        label_status.setText("Error al registrar");
+        }
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

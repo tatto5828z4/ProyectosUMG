@@ -191,6 +191,13 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
+        if ( txt_buscar.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR EL CAMPO VACIO");
+
+            txt_buscar.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from carreras where codigo_carrera = ?");
@@ -208,12 +215,23 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
             }
 
         }catch (Exception e){
-
+            JOptionPane.showMessageDialog(null, "Error al buscar");
         }
+      }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
+        if ( txt_codigocarrera.getText().isEmpty() || txt_nombrecarrera.getText().isEmpty() || txt_codigofac.getText().isEmpty() || txt_estadocarrera.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codigocarrera.setText("");
+            txt_nombrecarrera.setText("");
+            txt_codigofac.setText("");
+            txt_estadocarrera.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into carreras values(?,?,?,?)");
@@ -230,12 +248,23 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
             txt_estadocarrera.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
+            label_status.setText("Error al registrar");
         }
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Codigo que permite actualizar registros en la base de datos
+        if ( txt_codigocarrera.getText().isEmpty() || txt_nombrecarrera.getText().isEmpty() || txt_codigofac.getText().isEmpty() || txt_estadocarrera.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codigocarrera.setText("");
+            txt_nombrecarrera.setText("");
+            txt_codigofac.setText("");
+            txt_estadocarrera.setText("");
+            
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -255,7 +284,9 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
             label_status.setText("Modificación exitosa.");
 
         } catch (Exception e) {
+            label_status.setText("Error al modificar");
         }
+      }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

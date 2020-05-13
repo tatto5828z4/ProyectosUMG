@@ -198,6 +198,13 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
+        if ( txt_buscar.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR El CAMPO VACIO");
+
+            txt_buscar.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from aulas where codigo_aula = ?");
@@ -216,10 +223,20 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
         }catch (Exception e){
 
         }
+      }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
+        if ( txt_codigoaula.getText().isEmpty() || txt_nombreaula.getText().isEmpty() || txt_estadoaula.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codigoaula.setText("");
+            txt_nombreaula.setText("");
+            txt_estadoaula.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into aulas values(?,?,?)");
@@ -234,12 +251,22 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
             txt_estadoaula.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
+            label_status.setText("Error al registrar");
         }
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Codigo que permite actualizar registros en la base de datos
+        if ( txt_codigoaula.getText().isEmpty() || txt_nombreaula.getText().isEmpty() || txt_estadoaula.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_codigoaula.setText("");
+            txt_nombreaula.setText("");
+            txt_estadoaula.setText("");
+            
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -257,7 +284,9 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
             label_status.setText("Modificación exitosa.");
 
         } catch (Exception e) {
+            label_status.setText("Error al modificar");
         }
+      }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -252,6 +252,18 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
+        if ( txt_carnet.getText().isEmpty() || txt_nombre.getText().isEmpty() || txt_direccion.getText().isEmpty() || txt_telefono.getText().isEmpty() || txt_correo.getText().isEmpty() || txt_estado.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_carnet.setText("");
+            txt_nombre.setText("");
+            txt_direccion.setText("");
+            txt_telefono.setText("");
+            txt_correo.setText("");
+            txt_estado.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?)");
@@ -272,13 +284,25 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
             txt_estado.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
+        label_status.setText("Error al registrar");
         }
-
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Codigo que permite actualizar registros en la base de datos
+        if ( txt_carnet.getText().isEmpty() || txt_nombre.getText().isEmpty() || txt_direccion.getText().isEmpty() || txt_telefono.getText().isEmpty() || txt_correo.getText().isEmpty() || txt_estado.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txt_carnet.setText("");
+            txt_nombre.setText("");
+            txt_direccion.setText("");
+            txt_telefono.setText("");
+            txt_correo.setText("");
+            txt_estado.setText("");
+            
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -302,7 +326,9 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
             label_status.setText("Modificación exitosa.");
 
         } catch (Exception e) {
+            label_status.setText("Error al modificar");
         }
+      }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -330,6 +356,13 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
+        if ( txt_buscar.getText().isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR El CAMPO VACIO");
+
+            txt_buscar.setText("");
+            
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from alumnos where carnet_alumno = ?");
@@ -349,8 +382,9 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
             }
 
         }catch (Exception e){
-
+        JOptionPane.showMessageDialog(null, "Error al buscar");
         }
+      }
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
