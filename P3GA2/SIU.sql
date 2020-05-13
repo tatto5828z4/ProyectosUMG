@@ -3,6 +3,12 @@ use siu;
 -- -----------------------------------------------------
 -- Table `educativo`.`Alumnos`
 -- -----------------------------------------------------
+create table usuario
+(
+id_usuario int primary key,
+nombre_usuario varchar(50)not null,
+password_usuario varchar (100) not null
+)engine= InnoDB;
 CREATE TABLE alumnos
  (
   carnet_alumno VARCHAR(15),
