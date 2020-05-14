@@ -201,6 +201,9 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
+        if(txt_buscar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUN CURSO DE BUSQUEDA");
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("select * from cursos where codigo_curso = ?");
@@ -213,11 +216,12 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                 txt_nombrecurso.setText(rs.getString("nombre_curso"));
                 txt_estadocurso.setText(rs.getString("estatus_curso"));
             } else {
-                JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                label_status.setText("curso no registrado");
             }
 
         }catch (Exception e){
-
+                JOptionPane.showMessageDialog(this, "ERROR AL MOSTRAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_buttonPrueba1MouseClicked
 
@@ -231,7 +235,10 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
        //Codigo que permite actualizar registros en la base de datos
-        try {
+        if(txt_codcurso.getText().trim().isEmpty() || txt_nombrecurso.getText().trim().isEmpty() || txt_estadocurso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CAMPOS VACIOS O INVALIDOS, FAVOR INGRESARLOS CORRECTAMENTE", "WARNING",JOptionPane.WARNING_MESSAGE);
+        }else{
+       try {
             String ID = txt_buscar.getText().trim();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
@@ -245,15 +252,20 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             txt_codcurso.setText("");
             txt_nombrecurso.setText("");
             txt_estadocurso.setText("");
-            label_status.setText("Modificación exitosa.");
+            label_status.setText("Modificacion Exitosa");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
-                                          
+        }
+        
     }//GEN-LAST:event_buttonG1MouseClicked
 
     private void buttonEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEditar1MouseClicked
     //Codigo que permite actualizar registros en la base de datos
+        if(txt_codcurso.getText().trim().isEmpty() || txt_nombrecurso.getText().trim().isEmpty() || txt_estadocurso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CAMPOS VACIOS O INVALIDOS, FAVOR INGRESARLOS CORRECTAMENTE", "WARNING",JOptionPane.WARNING_MESSAGE);
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -268,15 +280,20 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             txt_codcurso.setText("");
             txt_nombrecurso.setText("");
             txt_estadocurso.setText("");
-            label_status.setText("Modificación exitosa.");
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
         
+        }
     }//GEN-LAST:event_buttonEditar1MouseClicked
 
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
    //Codigo que permite borrar registros en la base de datos
+        if(txt_buscar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"NO SE INGRESO NINGUN CURSO PARA ELIMINAR");
+        }else{
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("delete from cursos where codigo_curso = ?");
@@ -288,9 +305,11 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             txt_nombrecurso.setText("");
             txt_estadocurso.setText("");
 
-            label_status.setText("Registro eliminado.");
+            JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         }
        
     }//GEN-LAST:event_buttonEliminar1MouseClicked

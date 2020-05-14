@@ -205,6 +205,9 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
 
     private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
    //Codigo que permite consultar registros en la base de datos
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from sedes where codigo_sede = ?");
@@ -221,12 +224,17 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             }
 
         }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "ERROR AL MOSTRAR REGISTRO", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
 
         }
     }//GEN-LAST:event_buttonPrueba1MouseClicked
 
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
    //Codigo que permite borrar registros en la base de datos
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
@@ -241,11 +249,17 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             label_status.setText("Registro eliminado.");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_buttonEliminar1MouseClicked
 
     private void buttonEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEditar1MouseClicked
   //Codigo que permite actualizar registros en la base de datos
+        if(txt_codigosede.getText().trim().isEmpty()||txt_nombresede.getText().trim().isEmpty()
+                || txt_estadosede.getText().trim().isEmpty()||txt_buscar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -263,12 +277,17 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             label_status.setText("Modificación exitosa.");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR", "ERROR", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }}
     }//GEN-LAST:event_buttonEditar1MouseClicked
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
     //Codigo que permite insertar registros en al base de datos
+        if(txt_codigosede.getText().trim().isEmpty()||txt_nombresede.getText().trim().isEmpty()
+                || txt_estadosede.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into sedes values(?,?,?)");
@@ -283,8 +302,8 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             txt_estadosede.setText("");
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
-
-        }
+            JOptionPane.showMessageDialog(this, "ERROR AL INSERTAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }}
     }//GEN-LAST:event_buttonG1MouseClicked
 
 

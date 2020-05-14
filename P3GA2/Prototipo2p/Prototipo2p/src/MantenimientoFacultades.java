@@ -199,6 +199,9 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
 
     private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
   //Codigo que permite consultar registros en la base de datos
+        if(txt_buscar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA FALCULTAD DE BUSQUEDA");
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from facultades where codigo_facultad = ?");
@@ -211,17 +214,20 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
                 txt_nombrefac.setText(rs.getString("nombre_facultad"));
                 txt_estadofac.setText(rs.getString("estatus_facultad"));
             } else {
-                JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                label_status.setText("Registr Eliminado");
             }
 
         }catch (Exception e){
-
+                JOptionPane.showMessageDialog(this, "ERROR AL MOSTRAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
-
+        }
     }//GEN-LAST:event_buttonPrueba1MouseClicked
 
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
      //Codigo que permite borrar registros en la base de datos
+        if(txt_buscar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA FACULTAD PARA ELIIMINAR");
+        }
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("delete from facultades where codigo_facultad = ?");
@@ -233,15 +239,19 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             txt_nombrefac.setText("");
             txt_estadofac.setText("");
 
-            label_status.setText("Registro eliminado.");
+            label_status.setText("Eliminacion Exitosa");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_buttonEliminar1MouseClicked
 
     private void buttonEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEditar1MouseClicked
   //Codigo que permite actualizar registros en la base de datos
+        if(txt_codfac.getText().trim().isEmpty() || txt_nombrefac.getText().trim().isEmpty() || txt_estadofac.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CAMPOS VACIOS O INVALIDOS, FAVOR INGRESARLOS CORRECTAMENTE", "WARNING",JOptionPane.WARNING_MESSAGE);
+        }else{
         try {
             String ID = txt_buscar.getText().trim();
 
@@ -256,15 +266,20 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             txt_codfac.setText("");
             txt_nombrefac.setText("");
             txt_estadofac.setText("");
-            label_status.setText("Modificación exitosa.");
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR REGISTRO", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         }
        
     }//GEN-LAST:event_buttonEditar1MouseClicked
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
        //Codigo que permite insertar registros en al base de datos
+        if(txt_codfac.getText().trim().isEmpty() || txt_nombrefac.getText().trim().isEmpty() || txt_estadofac.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CAMPOS VACIOS O INVALIDOS, FAVOR INGRESARLOS CORRECTAMENTE", "WARNING",JOptionPane.WARNING_MESSAGE);
+        }else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into facultades values(?,?,?)");
@@ -277,11 +292,13 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             txt_codfac.setText("");
             txt_nombrefac.setText("");
             txt_estadofac.setText("");
-            label_status.setText("Registro exitoso.");
+            JOptionPane.showMessageDialog(this, "REGISTRO EXITOSO", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception e){
-
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
-
+       
+        
+        }
     }//GEN-LAST:event_buttonG1MouseClicked
 
 

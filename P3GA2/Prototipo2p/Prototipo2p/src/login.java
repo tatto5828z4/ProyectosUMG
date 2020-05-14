@@ -141,11 +141,15 @@ public class login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:  
+        
         String nombre = new String();
         String contra = new String();
         String no = new String();
         String co = new String();
-        
+        if(txt_id.getText().trim().isEmpty()||txt_usuario.getText().trim().isEmpty()||jpassClave.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"NO PUEDEN HABER CAMPOS VACIOS");
+        }
+        else{
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
 
@@ -169,8 +173,9 @@ public class login extends javax.swing.JFrame {
 
         }
         }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "ERROR AL ENCONTRAR USUARIO", "ERROR", JOptionPane.ERROR_MESSAGE);
 
-        }
+        }}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

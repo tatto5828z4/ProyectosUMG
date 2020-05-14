@@ -10,6 +10,7 @@
  */
 import java.sql.*;
 import javax.swing.JOptionPane;
+
 public class MantenimientoSecciones extends javax.swing.JInternalFrame {
 
     /**
@@ -205,71 +206,91 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_nombreseccionActionPerformed
 
     private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
- //Codigo que permite consultar registros en la base de datos
-        try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
-            pst.setString(1, txt_buscar.getText().trim());
+        //Codigo que permite consultar registros en la base de datos
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
+                pst.setString(1, txt_buscar.getText().trim());
 
-            ResultSet rs = pst.executeQuery();
+                ResultSet rs = pst.executeQuery();
 
-            if(rs.next()){
-                txt_codseccion.setText(rs.getString("codigo_seccion"));
-                txt_nombreseccion.setText(rs.getString("nombre_seccion"));
-                txt_estadoseccion.setText(rs.getString("estatus_seccion"));
-            } else {
-                JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                if (rs.next()) {
+                    txt_codseccion.setText(rs.getString("codigo_seccion"));
+                    txt_nombreseccion.setText(rs.getString("nombre_seccion"));
+                    txt_estadoseccion.setText(rs.getString("estatus_seccion"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "ERROR AL MOSTRAR REGISTRO", "ERROR", JOptionPane.ERROR_MESSAGE);
+
             }
-
-        }catch (Exception e){
-
         }
     }//GEN-LAST:event_buttonPrueba1MouseClicked
 
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
-   //Codigo que permite borrar registros en la base de datos
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
+        //Codigo que permite borrar registros en la base de datos
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
 
-            pst.setString(1, txt_buscar.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_buscar.getText().trim());
+                pst.executeUpdate();
 
-            txt_codseccion.setText("");
-            txt_nombreseccion.setText("");
-            txt_estadoseccion.setText("");
+                txt_codseccion.setText("");
+                txt_nombreseccion.setText("");
+                txt_estadoseccion.setText("");
 
-            label_status.setText("Registro eliminado.");
+                label_status.setText("Registro eliminado.");
 
-        } catch (Exception e) {
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_buttonEliminar1MouseClicked
 
     private void buttonEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEditar1MouseClicked
- //Codigo que permite actualizar registros en la base de datos
-        try {
-            String ID = txt_buscar.getText().trim();
+        //Codigo que permite actualizar registros en la base de datos
+        if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
+                || txt_estadoseccion.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
 
-            pst.setString(1, txt_codseccion.getText().trim());
-            pst.setString(2, txt_nombreseccion.getText().trim());
-            pst.setString(3, txt_estadoseccion.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_codseccion.getText().trim());
+                pst.setString(2, txt_nombreseccion.getText().trim());
+                pst.setString(3, txt_estadoseccion.getText().trim());
+                pst.executeUpdate();
 
-            txt_codseccion.setText("");
-            txt_nombreseccion.setText("");
-            txt_estadoseccion.setText("");
-            label_status.setText("Modificación exitosa.");
+                txt_codseccion.setText("");
+                txt_nombreseccion.setText("");
+                txt_estadoseccion.setText("");
+                label_status.setText("Modificación exitosa.");
 
-        } catch (Exception e) {
-        } 
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_buttonEditar1MouseClicked
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
-         //Codigo que permite insertar registros en al base de datos
-        try{
+        //Codigo que permite insertar registros en al base de datos
+        if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
+                || txt_estadoseccion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+        try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("insert into secciones values(?,?,?)");
 
@@ -282,9 +303,9 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             txt_nombreseccion.setText("");
             txt_estadoseccion.setText("");
             label_status.setText("Registro exitoso.");
-        }catch (Exception e){
-
-        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL INSERTAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }}
     }//GEN-LAST:event_buttonG1MouseClicked
 
 
