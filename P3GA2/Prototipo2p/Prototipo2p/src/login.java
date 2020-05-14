@@ -147,11 +147,8 @@ public class login extends javax.swing.JFrame {
         String co = new String();
         
         try{
-<<<<<<< HEAD
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-=======
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
->>>>>>> fba85d906af3728a946471b1a20824c184660aba
+
             PreparedStatement pst = cn.prepareStatement("select * from usuario where id_usuario = ?");
             pst.setString(1, txt_id.getText().trim());
 
