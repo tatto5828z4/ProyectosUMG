@@ -342,7 +342,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
         //Codigo que permite insertar registros en al base de datos
-        if (txt_buscar.getText().trim().isEmpty() || txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
+        if (txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
                 || txt_direccion.getText().trim().isEmpty() || txt_telefono.getText().trim().isEmpty()
                 || txt_correo.getText().trim().isEmpty() || txt_estado.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS","WARNING",JOptionPane.WARNING_MESSAGE);
