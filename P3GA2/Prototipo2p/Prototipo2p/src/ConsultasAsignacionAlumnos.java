@@ -146,6 +146,7 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
         //Codigo que permite consultar registros en la base de datos
        DefaultTableModel modelo = new DefaultTableModel();
        
+           
         try{
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
@@ -158,11 +159,9 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                   
             ResultSet rs = pst.executeQuery();   
             
-            String codb = "";
-            
-           codb = String.valueOf(txt_buscar.getText().trim());
-            
-            while(rs.next()){
+           if(rs.next()){
+               
+               while(rs.next()){
                              
                 String codigo_curso = "", carnet_alumno = "";
                 float nota = 0;     
@@ -203,15 +202,21 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                         
                 }    
                 
+           }
             
-            
-            }
+            }else{
+               
+               JOptionPane.showMessageDialog(null, "Registro no encontrado");
+               
+           }
             
         
             
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, "Error");
         }
+        
+          
         
         
     }//GEN-LAST:event_buttonPrueba1MouseClicked
