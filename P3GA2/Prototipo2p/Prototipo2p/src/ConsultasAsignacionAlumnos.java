@@ -168,21 +168,18 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                         nota = Float.parseFloat(rs.getString("nota_asignacioncursoalumnos"));
                         
               PreparedStatement pst1 = cn.prepareStatement("select * from alumnos where carnet_alumno = " + carnet_alumno);
+              ResultSet rs1 = pst1.executeQuery();
                 
-                ResultSet rs1 = pst1.executeQuery();
-                
-            
                 
                 while(rs1.next()){          
                         
-                String nombre_alumno = "";
-                
-                nombre_alumno = String.valueOf(rs1.getString("nombre_alumno"));
-            
+                String nombre_alumno = "";                
+                nombre_alumno = String.valueOf(rs1.getString("nombre_alumno"));            
                 
                 PreparedStatement pst2 = cn.prepareStatement("select * from cursos where codigo_curso = " + codigo_curso);
-                
                 ResultSet rs2 = pst2.executeQuery();
+                
+                
             while(rs2.next()){
              
                 String nombre_curso = "";
