@@ -146,8 +146,19 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
         //Codigo que permite consultar registros en la base de datos
        DefaultTableModel modelo = new DefaultTableModel();
        
+       try{
            
-        try{
+           Connection cnR = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+            PreparedStatement pstR = cnR.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
+            pstR.setString(1, txt_buscar.getText().trim());
+            ResultSet rsR = pstR.executeQuery();
+                     
+            if(rsR.next()){
+                
+                
+           
+           
+                try{
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
             PreparedStatement pst = cn.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
@@ -156,14 +167,11 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
             modelo.addColumn("Nombre");
             modelo.addColumn("Curso");
             modelo.addColumn("Nota");
-                  
             ResultSet rs = pst.executeQuery();   
             
-           if(rs.next()){
-               
                while(rs.next()){
                              
-                String codigo_curso = "", carnet_alumno = "";
+                String codigo_curso = "", carnet_alumno="";
                 float nota = 0;     
                             
                         codigo_curso = String.valueOf(rs.getString("codigo_curso"));
@@ -187,7 +195,6 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                 
             while(rs2.next()){
              
-                
                 String nombre_curso = "";
                 
                 nombre_curso = String.valueOf(rs2.getString("nombre_curso"));
@@ -196,25 +203,45 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                     modelo.addRow(filas);
                     
                     combo.setModel(modelo);
-                                        
                 
-            }                
+              }                
                         
-                }    
+            }    
                 
-           }
+         }
             
-            }else{
-               
-               JOptionPane.showMessageDialog(null, "Registro no encontrado");
-               
-           }
+          
             
         
             
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, "Error");
         }
+                
+                
+                
+           
+           
+           
+           
+           
+       }else{
+               
+               JOptionPane.showMessageDialog(null, "No estan");
+               
+               }
+            
+            
+           
+       }catch(Exception e){
+           
+           JOptionPane.showMessageDialog(null, "Error");
+           
+       }
+       
+       
+           
+        
         
           
         
