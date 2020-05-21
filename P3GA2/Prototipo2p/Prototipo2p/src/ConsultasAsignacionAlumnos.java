@@ -104,7 +104,7 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                                 .addGap(28, 28, 28)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(46, 46, 46)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -123,9 +123,9 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                                 .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,26 +146,39 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
         //Codigo que permite consultar registros en la base de datos
        DefaultTableModel modelo = new DefaultTableModel();
        
-        try{
+       try{
+           
+           Connection cnR = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+            PreparedStatement pstR = cnR.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
+            pstR.setString(1, txt_buscar.getText().trim());
+            ResultSet rsR = pstR.executeQuery();
+                     
+            if(rsR.next()){
+                
+                
+           
+           
+                try{
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
             PreparedStatement pst = cn.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
             pst.setString(1, txt_buscar.getText().trim());
             modelo.addColumn("Carnet");
             modelo.addColumn("Nombre");
             modelo.addColumn("Curso");
             modelo.addColumn("Nota");
+            ResultSet rs = pst.executeQuery();   
             
-            ResultSet rs = pst.executeQuery();
-            
-            while(rs.next()){
-                
-                String codigo_curso = "", carnet_alumno = "";
+               while(rs.next()){
+                             
+                String codigo_curso = "", carnet_alumno="";
                 float nota = 0;     
                             
                         codigo_curso = String.valueOf(rs.getString("codigo_curso"));
                         carnet_alumno = String.valueOf(rs.getString("carnet_alumno"));   
                         nota = Float.parseFloat(rs.getString("nota_asignacioncursoalumnos"));
+                
+                        
                         
               PreparedStatement pst1 = cn.prepareStatement("select * from alumnos where carnet_alumno = " + carnet_alumno);
               ResultSet rs1 = pst1.executeQuery();
@@ -185,22 +198,54 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
                 String nombre_curso = "";
                 
                 nombre_curso = String.valueOf(rs2.getString("nombre_curso"));
+                    
+                    Object filas[] = {carnet_alumno,nombre_alumno,nombre_curso,nota};
+                    modelo.addRow(filas);
+                    
+                    combo.setModel(modelo);
                 
-                Object filas[] = {carnet_alumno,nombre_alumno,nombre_curso,nota};
-                modelo.addRow(filas);
-
-                combo.setModel(modelo);
-                
-                //JOptionPane.showMessageDialog(null, carnet_alumno + " " + nombre_alumno + " " + nombre_curso + " " + nota); 
-            }                
+              }                
                         
-                }
+            }    
                 
-            }
+         }
+            
+          
+            
+        
             
         }catch(Exception e){
               JOptionPane.showMessageDialog(null, "Error");
         }
+                
+                
+                
+           
+           
+           
+           
+           
+       }else{
+               
+               JOptionPane.showMessageDialog(null, "No estan");
+               
+               }
+            
+            
+           
+       }catch(Exception e){
+           
+           JOptionPane.showMessageDialog(null, "Error");
+           
+       }
+       
+       
+           
+        
+        
+          
+        
+        
     }//GEN-LAST:event_buttonPrueba1MouseClicked
 
     private void buttonPrueba1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_buttonPrueba1AncestorAdded

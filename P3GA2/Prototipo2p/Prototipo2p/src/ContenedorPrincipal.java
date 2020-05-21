@@ -50,7 +50,7 @@ public class ContenedorPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon= new ImageIcon(getClass().getResource("/Imagenes/descarga (1).jpg"));
+        ImageIcon icon= new ImageIcon(getClass().getResource("/Imagenes/FondoF.jpg"));
         Image image= icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
