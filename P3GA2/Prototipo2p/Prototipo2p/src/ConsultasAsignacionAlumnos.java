@@ -148,7 +148,7 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
        
        try{
            
-           Connection cnR = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+           Connection cnR = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pstR = cnR.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
             pstR.setString(1, txt_buscar.getText().trim());
             ResultSet rsR = pstR.executeQuery();
@@ -160,7 +160,7 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
            
                 try{
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
             pst.setString(1, txt_buscar.getText().trim());
             modelo.addColumn("Carnet");
