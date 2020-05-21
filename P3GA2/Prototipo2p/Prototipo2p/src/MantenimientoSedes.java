@@ -191,89 +191,107 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select * from sedes where codigo_sede = ?");
-            pst.setString(1, txt_buscar.getText().trim());
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("select * from sedes where codigo_sede = ?");
+                pst.setString(1, txt_buscar.getText().trim());
 
-            ResultSet rs = pst.executeQuery();
+                ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
-                txt_codigosede.setText(rs.getString("codigo_sede"));
-                txt_nombresede.setText(rs.getString("nombre_sede"));
-                txt_estadosede.setText(rs.getString("estatus_sede"));
-                JOptionPane.showMessageDialog(this, "Se encontró el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-            } else {
+                if (rs.next()) {
+                    txt_codigosede.setText(rs.getString("codigo_sede"));
+                    txt_nombresede.setText(rs.getString("nombre_sede"));
+                    txt_estadosede.setText(rs.getString("estatus_sede"));
+                    JOptionPane.showMessageDialog(this, "Se encontró el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnEliminrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminrMouseClicked
         //Codigo que permite borrar registros en la base de datos
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
 
-            pst.setString(1, txt_buscar.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_buscar.getText().trim());
+                pst.executeUpdate();
 
-            txt_codigosede.setText("");
-            txt_nombresede.setText("");
-            txt_estadosede.setText("");
+                txt_codigosede.setText("");
+                txt_nombresede.setText("");
+                txt_estadosede.setText("");
 
-            JOptionPane.showMessageDialog(this, "Se elimonó el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Se elimonó el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Registro no eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Registro no eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnEliminrMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         //Codigo que permite actualizar registros en la base de datos
-        try {
-            String ID = txt_buscar.getText().trim();
+        if (txt_codigosede.getText().trim().isEmpty() || txt_nombresede.getText().trim().isEmpty()
+                || txt_estadosede.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("update sedes set codigo_sede = ?, nombre_sede=?, estatus_sede=?  where codigo_sede = " + ID);
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("update sedes set codigo_sede = ?, nombre_sede=?, estatus_sede=?  where codigo_sede = " + ID);
 
-            pst.setString(1, txt_codigosede.getText().trim());
-            pst.setString(2, txt_nombresede.getText().trim());
-            pst.setString(3, txt_estadosede.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_codigosede.getText().trim());
+                pst.setString(2, txt_nombresede.getText().trim());
+                pst.setString(3, txt_estadosede.getText().trim());
+                pst.executeUpdate();
 
-            txt_codigosede.setText("");
-            txt_nombresede.setText("");
-            txt_estadosede.setText("");
+                txt_codigosede.setText("");
+                txt_nombresede.setText("");
+                txt_estadosede.setText("");
 
-            JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         //Codigo que permite insertar registros en al base de datos
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("insert into sedes values(?,?,?)");
+        if (txt_codigosede.getText().trim().isEmpty() || txt_nombresede.getText().trim().isEmpty()
+                || txt_estadosede.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("insert into sedes values(?,?,?)");
 
-            pst.setString(1, txt_codigosede.getText().trim());
-            pst.setString(2, txt_nombresede.getText().trim());
-            pst.setString(3, txt_estadosede.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_codigosede.getText().trim());
+                pst.setString(2, txt_nombresede.getText().trim());
+                pst.setString(3, txt_estadosede.getText().trim());
+                pst.executeUpdate();
 
-            txt_codigosede.setText("");
-            txt_nombresede.setText("");
-            txt_estadosede.setText("");
+                txt_codigosede.setText("");
+                txt_nombresede.setText("");
+                txt_estadosede.setText("");
 
-            JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error en registro.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error en registro.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnGuardarMouseClicked
 
