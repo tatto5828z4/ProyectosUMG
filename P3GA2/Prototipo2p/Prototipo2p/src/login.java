@@ -222,7 +222,7 @@ public class login extends javax.swing.JFrame {
         }
         else{
             try{
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
 
                 PreparedStatement pst = cn.prepareStatement("select * from usuario where id_usuario = ?");
                 pst.setString(1, txt_id.getText().trim());
