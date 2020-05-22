@@ -195,7 +195,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(2, 2, 2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cmbCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,7 +293,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -377,7 +377,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
 //Nombre alumno de carnet
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select nombre_alumno from alumnoswhere carnet= ?");
+            PreparedStatement pst = cn.prepareStatement("select nombre_alumno from alumnos where carnet= ?");
 
             pst.setString(1, cmbCarnteAlumno.getSelectedItem().toString());
 
@@ -399,7 +399,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // codico carrera de nombre carrera
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_carrera from alumnoswhere nombre_carrera= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_carrera from carreras where nombre_carrera= ?");
 
             pst.setString(1, cmbCodigoCarrera.getSelectedItem().toString());
 
@@ -422,7 +422,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
 
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_jornada from alumnoswhere nombre_jornada= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_jornada from jornadas where nombre_jornada= ?");
 
             pst.setString(1, cmbCodigoJornada.getSelectedItem().toString());
 
@@ -444,7 +444,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_curso from alumnoswhere nombre_curso= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_curso from cursos where nombre_curso= ?");
 
             pst.setString(1, cmbCodigoCurso.getSelectedItem().toString());
 
@@ -465,7 +465,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_seccion from alumnoswhere nombre_seccion= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_seccion from secciones where nombre_seccion= ?");
 
             pst.setString(1, cmdCodigoSeccion.getSelectedItem().toString());
 
@@ -485,7 +485,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_aula from alumnoswhere nombre_aula= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_aula from aulas where nombre_aula= ?");
 
             pst.setString(1, cmbCodigoAula.getSelectedItem().toString());
 
@@ -505,7 +505,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_sede from alumnoswhere nombre_sede= ?");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_sede from sedes where nombre_sede= ?");
 
             pst.setString(1, cmbCodigoSede.getSelectedItem().toString());
 
