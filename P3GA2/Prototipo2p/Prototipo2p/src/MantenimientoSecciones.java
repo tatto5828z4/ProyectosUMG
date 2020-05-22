@@ -195,7 +195,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
                 pst.setString(1, txt_buscar.getText().trim());
 
@@ -232,7 +232,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             try {
                 String ID = txt_buscar.getText().trim();
 
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
 
                 pst.setString(1, txt_codseccion.getText().trim());
@@ -258,7 +258,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
 
                 pst.setString(1, txt_buscar.getText().trim());
@@ -287,7 +287,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("insert into secciones values(?,?,?)");
 
                 pst.setString(1, txt_codseccion.getText().trim());

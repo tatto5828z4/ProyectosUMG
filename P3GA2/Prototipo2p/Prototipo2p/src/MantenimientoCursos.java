@@ -205,7 +205,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUN CURSO DE BUSQUEDA");
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("select * from cursos where codigo_curso = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
@@ -245,7 +245,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("insert into cursos values(?,?,?)");
 
             pst.setString(1, txt_codcurso.getText().trim());
@@ -271,7 +271,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("update cursos set codigo_curso = ?, nombre_curso=?, estatus_curso=?  where codigo_curso = " + ID);
 
             pst.setString(1, txt_codcurso.getText().trim());
@@ -297,7 +297,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"NO SE INGRESO NINGUN CURSO PARA ELIMINAR");
         }else{
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("delete from cursos where codigo_curso = ?");
 
             pst.setString(1, txt_buscar.getText().trim());

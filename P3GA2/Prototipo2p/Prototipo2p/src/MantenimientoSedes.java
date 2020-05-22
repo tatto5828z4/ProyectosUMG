@@ -196,7 +196,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("select * from sedes where codigo_sede = ?");
                 pst.setString(1, txt_buscar.getText().trim());
 
@@ -224,7 +224,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
 
 
@@ -251,7 +251,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         } else {
             try {
                 String ID = txt_buscar.getText().trim();
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("update sedes set codigo_sede = ?, nombre_sede=?, estatus_sede=?  where codigo_sede = " + ID);
 
                 pst.setString(1, txt_codigosede.getText().trim());
@@ -282,7 +282,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("insert into sedes values(?,?,?)");
 
                 pst.setString(1, txt_codigosede.getText().trim());

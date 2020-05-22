@@ -201,7 +201,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA FALCULTAD DE BUSQUEDA");
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("select * from facultades where codigo_facultad = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
@@ -227,7 +227,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA FACULTAD PARA ELIIMINAR");
         }
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("delete from facultades where codigo_facultad = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -253,7 +253,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("update facultades set codigo_facultad = ?, nombre_facultad=?, estatus_facultad=?  where codigo_facultad = " + ID);
 
             pst.setString(1, txt_nombrefac.getText().trim());
@@ -279,7 +279,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "CAMPOS VACIOS O INVALIDOS, FAVOR INGRESARLOS CORRECTAMENTE", "WARNING",JOptionPane.WARNING_MESSAGE);
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("insert into facultades values(?,?,?)");
 
             pst.setString(1, txt_codfac.getText().trim());

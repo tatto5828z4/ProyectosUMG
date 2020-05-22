@@ -218,7 +218,7 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
             
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("select * from carreras where codigo_carrera = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
@@ -242,7 +242,7 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
       //Codigo que permite borrar registros en la base de datos
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("delete from carreras where codigo_carrera = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -276,7 +276,7 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("update carreras set codigo_carrera = ?, nombre_carrera=?, codigo_facultad=?,estatus_carrera=?  where codigo_carrera = " + ID);
 
             pst.setString(1, txt_codigocarrera.getText().trim());
@@ -311,7 +311,7 @@ public class MantenimientoCarreras extends javax.swing.JInternalFrame {
             
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("insert into carreras values(?,?,?,?)");
 
             pst.setString(1, txt_codigocarrera.getText().trim());

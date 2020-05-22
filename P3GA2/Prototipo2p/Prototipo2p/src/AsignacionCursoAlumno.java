@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author jorgi
@@ -22,6 +21,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     public AsignacionCursoAlumno() {
         initComponents();
         comboDBCursoAlumnos();
+      
     }
 
     /**
@@ -293,7 +293,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -325,7 +325,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             lblCodigoCurso.setText("");
             lblNombreAlumno.setText("");
             txt_idasig.setText("");
-
+            
         }
         String departamento = cmbCarnteAlumno.getSelectedItem().toString();
         if (departamento.isEmpty()) {
@@ -333,7 +333,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             return;
         } else {
             try {
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
                 PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosalumnos values(?,?,?,?,?,?,?,?)");
 
                 pst.setString(1, txt_idasig.getText().trim());
@@ -376,8 +376,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmbCarnteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarnteAlumnoActionPerformed
 //Nombre alumno de carnet
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select nombre_alumno from alumnoswhere carnet= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select nombre_alumno from alumnos where carnet_alumno= ?");
 
             pst.setString(1, cmbCarnteAlumno.getSelectedItem().toString());
 
@@ -398,8 +398,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmbCodigoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCodigoCarreraActionPerformed
         // codico carrera de nombre carrera
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_carrera from alumnoswhere nombre_carrera= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_carrera from carreras where nombre_carrera= ?");
 
             pst.setString(1, cmbCodigoCarrera.getSelectedItem().toString());
 
@@ -421,8 +421,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_jornada from alumnoswhere nombre_jornada= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_jornada from jornadas where nombre_jornada= ?");
 
             pst.setString(1, cmbCodigoJornada.getSelectedItem().toString());
 
@@ -443,8 +443,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmbCodigoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCodigoCursoActionPerformed
         // TODO add your handling code here:
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_curso from alumnoswhere nombre_curso= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_curso from cursos where nombre_curso= ?");
 
             pst.setString(1, cmbCodigoCurso.getSelectedItem().toString());
 
@@ -464,8 +464,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmdCodigoSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCodigoSeccionActionPerformed
         // TODO add your handling code here:
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_seccion from alumnoswhere nombre_seccion= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_seccion from secciones where nombre_seccion= ?");
 
             pst.setString(1, cmdCodigoSeccion.getSelectedItem().toString());
 
@@ -484,8 +484,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmbCodigoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCodigoAulaActionPerformed
         // TODO add your handling code here:
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_aula from alumnoswhere nombre_aula= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_aula from aulas where nombre_aula= ?");
 
             pst.setString(1, cmbCodigoAula.getSelectedItem().toString());
 
@@ -493,7 +493,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
 
             if (rs.next()) {
                 lblCodigoAula.setText(rs.getString("codigo_aula"));
-            } else {
+            }
+            if (cmbCodigoAula.getSelectedItem().toString() == "Seleccione una opción") {
                 lblCodigoAula.setText("");
             }
 
@@ -504,15 +505,15 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     private void cmbCodigoSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCodigoSedeActionPerformed
         // TODO add your handling code here:
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select  codigo_sede from alumnoswhere nombre_sede= ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select  codigo_sede from sedes where nombre_sede= ?");
 
             pst.setString(1, cmbCodigoSede.getSelectedItem().toString());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                lblCodigoSede.setText(rs.getString("codigo_aula"));
+                lblCodigoSede.setText(rs.getString("codigo_sede"));
             } else {
                 lblCodigoSede.setText("");
             }
@@ -522,7 +523,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbCodigoSedeActionPerformed
 
     private void limpiarbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarbtn1MouseClicked
-        
+
         cmbCodigoCarrera.setSelectedIndex(0);
         cmbCodigoSede.setSelectedIndex(0);
         cmbCodigoJornada.setSelectedIndex(0);
@@ -537,16 +538,17 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         lblCodigoAula.setText("");
         lblCodigoCurso.setText("");
         lblNombreAlumno.setText("");
-        txt_idasig.setText("");    
-        
-        comboDBCursoAlumnos();
-        
+        txt_idasig.setText("");
+
+
     }//GEN-LAST:event_limpiarbtn1MouseClicked
+
+
 
     public void comboDBCursoAlumnos() {
 
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
 
             PreparedStatement pst = cn.prepareStatement("select nombre_carrera from carreras");
             ResultSet rs = pst.executeQuery();
@@ -555,47 +557,48 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 cmbCodigoCarrera.addItem(rs.getString("nombre_carrera"));
             }
+
             PreparedStatement pst1 = cn.prepareStatement("select nombre_sede from sedes");
             ResultSet rs1 = pst1.executeQuery();
 
             cmbCodigoSede.addItem("Seleccione una opción");
             while (rs1.next()) {
-                cmbCodigoSede.addItem(rs.getString("nombre_sede"));
+                cmbCodigoSede.addItem(rs1.getString("nombre_sede"));
             }
             PreparedStatement pst2 = cn.prepareStatement("select nombre_jornada from jornadas");
             ResultSet rs2 = pst2.executeQuery();
 
             cmbCodigoJornada.addItem("Seleccione una opción");
             while (rs2.next()) {
-                cmbCodigoJornada.addItem(rs.getString("nombre_jornada"));
+                cmbCodigoJornada.addItem(rs2.getString("nombre_jornada"));
             }
             PreparedStatement pst3 = cn.prepareStatement("select nombre_seccion from secciones");
             ResultSet rs3 = pst3.executeQuery();
 
             cmdCodigoSeccion.addItem("Seleccione una opción");
             while (rs3.next()) {
-                cmdCodigoSeccion.addItem(rs.getString("nombre_seccion"));
+                cmdCodigoSeccion.addItem(rs3.getString("nombre_seccion"));
             }
             PreparedStatement pst4 = cn.prepareStatement("select nombre_aula from aulas");
             ResultSet rs4 = pst4.executeQuery();
 
             cmbCodigoAula.addItem("Seleccione una opción");
             while (rs4.next()) {
-                cmbCodigoAula.addItem(rs.getString("nombre_aula"));
+                cmbCodigoAula.addItem(rs4.getString("nombre_aula"));
             }
             PreparedStatement pst5 = cn.prepareStatement("select nombre_curso from cursos");
             ResultSet rs5 = pst5.executeQuery();
 
             cmbCodigoCurso.addItem("Seleccione una opción");
             while (rs5.next()) {
-                cmbCodigoCurso.addItem(rs.getString("nombre_curso"));
+                cmbCodigoCurso.addItem(rs5.getString("nombre_curso"));
             }
             PreparedStatement pst6 = cn.prepareStatement("select carnet_alumno from alumnos");
             ResultSet rs6 = pst6.executeQuery();
 
             cmbCarnteAlumno.addItem("Seleccione una opción");
             while (rs6.next()) {
-                cmbCarnteAlumno.addItem(rs.getString("carnet_alumno"));
+                cmbCarnteAlumno.addItem(rs6.getString("carnet_alumno"));
             }
 
         } catch (Exception e) {

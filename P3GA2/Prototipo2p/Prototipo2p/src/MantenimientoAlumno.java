@@ -259,7 +259,7 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
             
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("select * from alumnos where carnet_alumno = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
@@ -286,7 +286,7 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
     private void buttonEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminar1MouseClicked
          //Codigo que permite borrar registros en la base de datos
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("delete from alumnos where carnet_alumno = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -322,7 +322,7 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
             
         }else{
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?)");
 
             pst.setString(1, txt_carnet.getText().trim());
@@ -364,7 +364,7 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "6182");
             PreparedStatement pst = cn.prepareStatement("update alumnos set carnet_alumno = ?, nombre_alumno=?, direccion_alumno=?, telefono_alumno=?, email_alumno=?, estatus_alumno=?  where carnet_alumno = " + ID);
 
             pst.setString(1, txt_carnet.getText().trim());
