@@ -10,6 +10,7 @@
  */
 import java.sql.*;
 import javax.swing.JOptionPane;
+
 public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
 
     /**
@@ -83,20 +84,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             }
         });
 
-        cboCodigoCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
-        cboCodigoSede.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
-        cboCodigoSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
-        cboCodigoMaestro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
-        cboCodigoAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
-        cboCodigoJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
-
         cboCodigoCarrera.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        cboCodigoCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
         cboCodigoCarrera.setBorder(null);
         cboCodigoCarrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -187,7 +175,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
 
     private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
         //Codigo que permite insertar registros en al base de datos
-        String codc,codj,coda,codm,cods,codsec,codcur;
+        String codc, codj, coda, codm, cods, codsec, codcur;
         codc = cboCodigoCarrera.getSelectedItem().toString();
         codj = cboCodigoJornada.getSelectedItem().toString();
         coda = cboCodigoAula.getSelectedItem().toString();
@@ -195,8 +183,8 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
         cods = cboCodigoSede.getSelectedItem().toString();
         codsec = cboCodigoSeccion.getSelectedItem().toString();
         codcur = cboCodigoCurso.getSelectedItem().toString();
-        
-        if ( codc == "." || codj == "." || coda == "." || cods == "."|| codsec=="." || codcur=="." || codc == "" || codj == "" || coda == "" || cods == ""|| codsec=="" || codcur==""){
+
+        if (codc == "." || codj == "." || coda == "." || cods == "." || codsec == "." || codcur == "." || codc == "" || codj == "" || coda == "" || cods == "" || codsec == "" || codcur == "") {
 
             JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
 
@@ -208,9 +196,9 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             cboCodigoSeccion.setSelectedItem(0);
             cboCodigoCurso.setSelectedItem(0);
 
-        }else{
+        } else {
 
-            try{
+            try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosmastros values(?,?,?,?,?,?,?)");
 
@@ -222,7 +210,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
                 pst.setString(6, codcur);
                 pst.setString(7, codm);
                 pst.executeUpdate();
-                
+
                 cboCodigoCarrera.setSelectedItem(0);
                 cboCodigoJornada.setSelectedItem(0);
                 cboCodigoAula.setSelectedItem(0);
@@ -230,14 +218,73 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
                 cboCodigoSede.setSelectedItem(0);
                 cboCodigoSeccion.setSelectedItem(0);
                 cboCodigoCurso.setSelectedItem(0);
-               
-                JOptionPane.showMessageDialog(this, "REGISTRO EXITOSO","MENSAJE",JOptionPane.INFORMATION_MESSAGE);
-            }catch (Exception e){
-                JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR","ERROR",JOptionPane.ERROR_MESSAGE);
+
+                JOptionPane.showMessageDialog(this, "REGISTRO EXITOSO", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_buttonG1MouseClicked
 
+    public void cboDBMaestroAlumnos() {
+
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+
+            PreparedStatement pst = cn.prepareStatement("select nombre_carrera from carreras");
+            ResultSet rs = pst.executeQuery();
+
+            cboCodigoCarrera.addItem("Seleccione una opción");
+            while (rs.next()) {
+                cboCodigoCarrera.addItem(rs.getString("nombre_carrera"));
+            }
+            PreparedStatement pst1 = cn.prepareStatement("select nombre_sede from sedes");
+            ResultSet rs1 = pst1.executeQuery();
+
+            cboCodigoSede.addItem("Seleccione una opción");
+            while (rs1.next()) {
+                cboCodigoSede.addItem(rs.getString("nombre_sede"));
+            }
+            PreparedStatement pst2 = cn.prepareStatement("select nombre_jornada from jornadas");
+            ResultSet rs2 = pst2.executeQuery();
+
+            cboCodigoJornada.addItem("Seleccione una opción");
+            while (rs2.next()) {
+                cboCodigoJornada.addItem(rs.getString("nombre_jornada"));
+            }
+            PreparedStatement pst3 = cn.prepareStatement("select nombre_seccion from secciones");
+            ResultSet rs3 = pst3.executeQuery();
+
+            cboCodigoSeccion.addItem("Seleccione una opción");
+            while (rs3.next()) {
+                cboCodigoSeccion.addItem(rs.getString("nombre_seccion"));
+            }
+            PreparedStatement pst4 = cn.prepareStatement("select nombre_aula from aulas");
+            ResultSet rs4 = pst4.executeQuery();
+
+            cboCodigoAula.addItem("Seleccione una opción");
+            while (rs4.next()) {
+                cboCodigoAula.addItem(rs.getString("nombre_aula"));
+            }
+            PreparedStatement pst5 = cn.prepareStatement("select nombre_curso from cursos");
+            ResultSet rs5 = pst5.executeQuery();
+
+            cboCodigoCurso.addItem("Seleccione una opción");
+            while (rs5.next()) {
+                cboCodigoCurso.addItem(rs.getString("nombre_curso"));
+            }
+            PreparedStatement pst6 = cn.prepareStatement("select nombre_maestro from maestros");
+            ResultSet rs6 = pst6.executeQuery();
+
+            cboCodigoMaestro.addItem("Seleccione una opción");
+            while (rs6.next()) {
+                cboCodigoMaestro.addItem(rs.getString("nombre_maestro"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private BottonGuardar.buttonG buttonG1;
