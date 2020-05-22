@@ -14,6 +14,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
      */
     public MantenimientoSecciones() {
         initComponents();
+        buscarSecciones();
     }
 
     @SuppressWarnings("unchecked")
@@ -21,7 +22,6 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txt_buscar = new javax.swing.JTextField();
         btnBuscar = new buttonPrueba.buttonPrueba();
         jLabel1 = new javax.swing.JLabel();
         txt_codseccion = new javax.swing.JTextField();
@@ -32,6 +32,7 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         btnGuardar = new BottonGuardar.buttonG();
         btnEditar = new BottonEditar.buttonEditar();
         btnEliminar = new BottonEliminar.buttonEliminar();
+        cboBuscar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -41,9 +42,6 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         setVisible(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        txt_buscar.setBackground(new java.awt.Color(227, 227, 227));
-        txt_buscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,14 +105,15 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -122,26 +121,25 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_codseccion, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_nombreseccion)
-                            .addComponent(txt_estadoseccion)))
+                            .addComponent(txt_estadoseccion)
+                            .addComponent(txt_codseccion)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(90, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(cboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)))
+                .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboBuscar))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,13 +189,13 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
-                pst.setString(1, txt_buscar.getText().trim());
+                pst.setString(1, cboBuscar.getSelectedItem().toString());
 
                 ResultSet rs = pst.executeQuery();
 
@@ -226,11 +224,11 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         //Codigo que permite actualizar registros en la base de datos
         if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
-                || txt_estadoseccion.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
+                || txt_estadoseccion.getText().trim().isEmpty() || cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                String ID = txt_buscar.getText().trim();
+                String ID = cboBuscar.getSelectedItem().toString();
 
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
@@ -254,14 +252,14 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
      //Codigo que permite borrar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
 
-                pst.setString(1, txt_buscar.getText().trim());
+                pst.setString(1, cboBuscar.getSelectedItem().toString());
                 pst.executeUpdate();
 
                 txt_codseccion.setText("");
@@ -305,7 +303,24 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
             }
         }
     }
+    
+    
+    public void buscarSecciones(){
+        try{
+          
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+        PreparedStatement pst = cn.prepareStatement("select codigo_seccion from secciones");
+            ResultSet rs = pst.executeQuery();
 
+            cboBuscar.addItem("Seleccione una opción");
+            while (rs.next()) {
+                cboBuscar.addItem(rs.getString("codigo_seccion"));
+            }  
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e,"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }
    
 
 
@@ -314,11 +329,11 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
     private BottonEditar.buttonEditar btnEditar;
     private BottonEliminar.buttonEliminar btnEliminar;
     private BottonGuardar.buttonG btnGuardar;
+    private javax.swing.JComboBox<String> cboBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_codseccion;
     private javax.swing.JTextField txt_estadoseccion;
     private javax.swing.JTextField txt_nombreseccion;
