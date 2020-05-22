@@ -18,6 +18,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
      */
     public AsignacionCursoMaestro() {
         initComponents();
+        cboDBMaestroAlumnos();
     }
 
     /**
