@@ -283,7 +283,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"Error al mostrar datos","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 
