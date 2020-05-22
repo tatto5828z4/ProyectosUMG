@@ -229,9 +229,11 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }catch(Exception e){
+        
+            }catch(Exception e){
             
             JOptionPane.showMessageDialog(this, "ERROR NO SE PUEDE ACCEDER A LOS DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         }
             
     }//GEN-LAST:event_buttonG1MouseClicked
