@@ -234,7 +234,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
         }else{
 
             try{
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
                 PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosmastros values(?,?,?,?,?,?,?)");
 
                 pst.setString(1, txt_codcarrera.getText().trim());
