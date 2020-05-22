@@ -145,8 +145,16 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
        try{
            
 
+<<<<<<< HEAD
            Connection cnR = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pstR = cnR.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
+=======
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "compromiso");
+
+           
+
+            PreparedStatement pstR = cn.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
+>>>>>>> 9a05b43615d79740fad9a66ea159480d3678a7ce
             pstR.setString(1, cboBuscar.getSelectedItem().toString());
             ResultSet rsR = pstR.executeQuery();
                      
@@ -157,7 +165,7 @@ public class ConsultasAsignacionAlumnos extends javax.swing.JInternalFrame {
            
                 try{
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+            
             PreparedStatement pst = cn.prepareStatement("select * from asignacioncursosalumnos where carnet_alumno = ?");
             pst.setString(1, cboBuscar.getSelectedItem().toString());
             modelo.addColumn("Carnet");

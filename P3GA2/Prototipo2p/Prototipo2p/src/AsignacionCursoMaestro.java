@@ -88,6 +88,11 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
         cboCodigoCarrera.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         cboCodigoCarrera.setBorder(null);
         cboCodigoCarrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboCodigoCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCodigoCarreraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -237,7 +242,11 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
         }
             
     }//GEN-LAST:event_buttonG1MouseClicked
-
+    }
+    private void cboCodigoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCodigoCarreraActionPerformed
+        
+    }//GEN-LAST:event_cboCodigoCarreraActionPerformed
+    
     public void cboDBMaestroAlumnos() {
 
         try {
@@ -294,7 +303,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error al mostrar datos","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,e,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 

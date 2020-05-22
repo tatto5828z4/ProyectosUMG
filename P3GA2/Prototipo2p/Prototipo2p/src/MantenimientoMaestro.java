@@ -13,6 +13,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
      */
     public MantenimientoMaestro() {
         initComponents();
+        buscarMaestro();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +21,6 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txt_buscar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -37,6 +37,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         btnGuardar = new BottonGuardar.buttonG();
         btnEditar = new BottonEditar.buttonEditar();
         btnEliminar = new BottonEliminar.buttonEliminar();
+        cboBuscar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -46,9 +47,6 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         setVisible(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        txt_buscar.setBackground(new java.awt.Color(227, 227, 227));
-        txt_buscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel5.setText("Código de Maestro:");
@@ -155,7 +153,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
                         .addContainerGap(89, Short.MAX_VALUE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(76, 76, 76)))
                 .addGap(35, 35, 35))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -171,9 +169,9 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -240,13 +238,13 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
-         if (txt_buscar.getText().trim().isEmpty()) {
+         if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUN MAESTRO DE BUSQUEDA");
         } else {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from maestros where codigo_maestro = ?");
-            pst.setString(1, txt_buscar.getText().trim());
+            pst.setString(1, cboBuscar.getSelectedItem().toString());
 
             ResultSet rs = pst.executeQuery();
 
@@ -271,7 +269,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {                                         
 
         //Codigo que permite borrar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUN MAESTRO A ELIMINAR");
         } else {
 
@@ -279,7 +277,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("delete from maestros where codigo_maestro = ?");
 
-                pst.setString(1, txt_buscar.getText().trim());
+                pst.setString(1, cboBuscar.getSelectedItem().toString());
                 pst.executeUpdate();
 
                 txt_codigo.setText("");
@@ -298,13 +296,13 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {                                           
         //Codigo que permite actualizar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty() || txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción" || txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
                 || txt_direccion.getText().trim().isEmpty() || txt_telefono.getText().trim().isEmpty()
                 || txt_correo.getText().trim().isEmpty() || txt_estado.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS","WARNING",JOptionPane.WARNING_MESSAGE);
         } else {
            try {
-            String ID = txt_buscar.getText().trim();
+            String ID = cboBuscar.getSelectedItem().toString();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("update maestros set codigo_maestro = ?, nombre_maestro=?, direccion_maestro=?, telefono_maetro=?, email_maestro=?, estatus_maestro=?  where codigo_maestro = " + ID);
@@ -365,6 +363,22 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         }
     }                                       
 
+        public void buscarMaestro(){
+            try{
+          
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+        PreparedStatement pst = cn.prepareStatement("select codigo_maestro from maestros");
+            ResultSet rs = pst.executeQuery();
+
+            cboBuscar.addItem("Seleccione una opción");
+            while (rs.next()) {
+                cboBuscar.addItem(rs.getString("codigo_maestro"));
+            }  
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e,"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -372,6 +386,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
     private BottonEditar.buttonEditar btnEditar;
     private BottonEliminar.buttonEliminar btnEliminar;
     private BottonGuardar.buttonG btnGuardar;
+    private javax.swing.JComboBox<String> cboBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -379,7 +394,6 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_direccion;

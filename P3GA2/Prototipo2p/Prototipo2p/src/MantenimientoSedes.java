@@ -13,6 +13,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
      */
     public MantenimientoSedes() {
         initComponents();
+        buscarSedes();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +21,6 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txt_buscar = new javax.swing.JTextField();
         btnBuscar = new buttonPrueba.buttonPrueba();
         jLabel1 = new javax.swing.JLabel();
         txt_codigosede = new javax.swing.JTextField();
@@ -31,6 +31,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         btnGuardar = new BottonGuardar.buttonG();
         btnEditar = new BottonEditar.buttonEditar();
         btnEliminr = new BottonEliminar.buttonEliminar();
+        cboBuscar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -40,9 +41,6 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         setVisible(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        txt_buscar.setBackground(new java.awt.Color(227, 227, 227));
-        txt_buscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
         btnBuscar.setText("buttonPrueba1");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,6 +110,13 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnEliminr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -123,26 +128,19 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
                             .addComponent(txt_nombresede)
                             .addComponent(txt_estadosede)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnEliminr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addComponent(cboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,7 +158,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 44, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,13 +190,13 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("select * from sedes where codigo_sede = ?");
-                pst.setString(1, txt_buscar.getText().trim());
+                pst.setString(1, cboBuscar.getSelectedItem().toString());
 
                 ResultSet rs = pst.executeQuery();
 
@@ -220,7 +218,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
 
     private void btnEliminrMouseClicked(java.awt.event.MouseEvent evt) {                                        
         //Codigo que permite borrar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
+        if (cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
@@ -228,7 +226,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
                 PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
 
 
-                pst.setString(1, txt_buscar.getText().trim());
+                pst.setString(1, cboBuscar.getSelectedItem().toString());
                 pst.executeUpdate();
 
                 txt_codigosede.setText("");
@@ -246,11 +244,11 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {                                       
         //Codigo que permite actualizar registros en la base de datos
         if (txt_codigosede.getText().trim().isEmpty() || txt_nombresede.getText().trim().isEmpty()
-                || txt_estadosede.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
+                || txt_estadosede.getText().trim().isEmpty() || cboBuscar.getSelectedItem().toString()=="Seleccione una opción") {
             JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                String ID = txt_buscar.getText().trim();
+                String ID = cboBuscar.getSelectedItem().toString();
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("update sedes set codigo_sede = ?, nombre_sede=?, estatus_sede=?  where codigo_sede = " + ID);
 
@@ -301,6 +299,22 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnGuardarMouseClicked
 
+    public void buscarSedes(){
+        try{
+          
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+        PreparedStatement pst = cn.prepareStatement("select codigo_sede from sedes");
+            ResultSet rs = pst.executeQuery();
+
+            cboBuscar.addItem("Seleccione una opción");
+            while (rs.next()) {
+                cboBuscar.addItem(rs.getString("codigo_sede"));
+            }  
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e,"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -308,11 +322,11 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
     private BottonEditar.buttonEditar btnEditar;
     private BottonEliminar.buttonEliminar btnEliminr;
     private BottonGuardar.buttonG btnGuardar;
+    private javax.swing.JComboBox<String> cboBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_codigosede;
     private javax.swing.JTextField txt_estadosede;
     private javax.swing.JTextField txt_nombresede;

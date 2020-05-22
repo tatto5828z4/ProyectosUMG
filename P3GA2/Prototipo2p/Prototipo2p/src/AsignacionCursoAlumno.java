@@ -357,6 +357,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonG1MouseClicked
 
     private void cmbCarnteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarnteAlumnoActionPerformed
+<<<<<<< HEAD
 //Nombre alumno de carnet
       try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
@@ -376,6 +377,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);            
         }
 
+=======
+>>>>>>> 9a05b43615d79740fad9a66ea159480d3678a7ce
 
     }//GEN-LAST:event_cmbCarnteAlumnoActionPerformed
 
