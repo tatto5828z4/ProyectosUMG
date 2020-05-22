@@ -215,9 +215,9 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
             txt_codigoaula.setText("");
             txt_nombreaula.setText("");
             txt_estadoaula.setText("");
-            label_status.setText("Registro exitoso.");
+            JOptionPane.showMessageDialog(this, "Registro Exitoso","MENSAJE",JOptionPane.INFORMATION_MESSAGE);
         }catch (Exception e){
-            label_status.setText("Error al registrar");
+            JOptionPane.showMessageDialog(this, "Error en Registro","ERROR",JOptionPane.ERROR_MESSAGE);
         }
       }
 
@@ -239,10 +239,10 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
             txt_nombreaula.setText("");
             txt_estadoaula.setText("");
 
-            label_status.setText("Registro eliminado.");
+            JOptionPane.showMessageDialog(this, "Registro Eliminado","MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
-            label_status.setText("Error al eliminar");
+            JOptionPane.showMessageDialog(this, "Error al Eliminar","ERROR",JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_buttonEliminar1MouseClicked
@@ -272,10 +272,10 @@ public class MantenimientoAulas extends javax.swing.JInternalFrame {
             txt_codigoaula.setText("");
             txt_nombreaula.setText("");
             txt_estadoaula.setText("");
-            label_status.setText("Modificación exitosa.");
+            JOptionPane.showMessageDialog(this, "Modificacion Exitosa","MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
-            label_status.setText("Error al modificar");
+           JOptionPane.showMessageDialog(this, "Error al Modificar","ERROR",JOptionPane.ERROR_MESSAGE);
         }
       }
 
