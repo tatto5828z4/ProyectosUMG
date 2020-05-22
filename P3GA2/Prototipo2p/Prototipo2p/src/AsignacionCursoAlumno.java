@@ -308,7 +308,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         //Codigo que permite insertar registros en al base de datos
         if (cmbCodigoCarrera.getSelectedItem().toString() == "Seleccione una opción" || cmbCodigoSede.getSelectedItem().toString() == "Seleccione una opción" || cmbCodigoJornada.getSelectedItem().toString() == "Seleccione una opción" || cmdCodigoSeccion.getSelectedItem().toString() == "Seleccione una opción" || cmbCodigoAula.getSelectedItem().toString() == "Seleccione una opción" || cmbCodigoCurso.getSelectedItem().toString() == "Seleccione una opción" || cmbCarnteAlumno.getSelectedItem().toString() == "Seleccione una opción" || txt_idasig.getText().isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "NO SE PUEDE DEJAR CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "cOMPLETE LOS CAMPOS VACIOS.", "WARNING", JOptionPane.WARNING_MESSAGE);
 
             cmbCodigoCarrera.setSelectedIndex(0);
             cmbCodigoSede.setSelectedIndex(0);
@@ -329,7 +329,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
         }
         String departamento = cmbCarnteAlumno.getSelectedItem().toString();
         if (departamento.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "¡NO SELECCIONO NIGUNA OPCION!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             try {
@@ -363,10 +363,10 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
                 lblNombreAlumno.setText("");
                 txt_idasig.setText("");
 
-                JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "REGISTRO EXITOSO", "Notificación", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
 
-                JOptionPane.showMessageDialog(this, "Error al registrar.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -389,7 +389,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
                 lblNombreAlumno.setText("");
             }
 
-        } catch (Exception e) {
+        } catch (Exception e) {            
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);            
         }
 
 
@@ -411,7 +412,8 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
                 lblCodigoCarrera.setText("");
             }
 
-        } catch (Exception e) {
+        } catch (Exception e) {            
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);            
         }
 
 
@@ -435,6 +437,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -457,6 +460,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_cmbCodigoCursoActionPerformed
@@ -478,6 +482,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_cmdCodigoSeccionActionPerformed
 
@@ -498,6 +503,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_cmbCodigoAulaActionPerformed
 
@@ -518,6 +524,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_cmbCodigoSedeActionPerformed
 
@@ -599,7 +606,7 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-
+            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
