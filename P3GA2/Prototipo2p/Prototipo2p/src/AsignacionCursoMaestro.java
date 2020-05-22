@@ -240,7 +240,8 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "ERROR NO SE PUEDE ACCEDER A LOS DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         }
-            
+    }
+         }   
     }//GEN-LAST:event_buttonG1MouseClicked
     }
     private void cboCodigoCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCodigoCarreraActionPerformed
