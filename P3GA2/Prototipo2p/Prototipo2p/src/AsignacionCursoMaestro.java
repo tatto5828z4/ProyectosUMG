@@ -18,6 +18,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
      */
     public AsignacionCursoMaestro() {
         initComponents();
+        cboDBMaestroAlumnos();
     }
 
     /**
@@ -186,7 +187,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
 
         if (codc == "." || codj == "." || coda == "." || cods == "." || codsec == "." || codcur == "." || codc == "" || codj == "" || coda == "" || cods == "" || codsec == "" || codcur == "") {
 
-            JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR CAMPOS VACIOS");
+            JOptionPane.showMessageDialog(null, "Complete los campos vacios.");
 
             cboCodigoCarrera.setSelectedItem(0);
             cboCodigoJornada.setSelectedItem(0);
@@ -198,8 +199,12 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
 
         } else {
 
+            try{
+                
+
             try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+
                 PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosmastros values(?,?,?,?,?,?,?)");
 
                 pst.setString(1, codc);
@@ -220,10 +225,15 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
                 cboCodigoCurso.setSelectedItem(0);
 
                 JOptionPane.showMessageDialog(this, "REGISTRO EXITOSO", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(this, "ERROR NO SE PUEDE ACCEDER A LOS DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+            
     }//GEN-LAST:event_buttonG1MouseClicked
 
     public void cboDBMaestroAlumnos() {
@@ -282,7 +292,7 @@ public class AsignacionCursoMaestro extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"Error al mostrar datos","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 
