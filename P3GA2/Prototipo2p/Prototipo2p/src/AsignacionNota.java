@@ -36,7 +36,6 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txt_buscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txt_idalumno = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
@@ -59,10 +58,11 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         txt_total = new javax.swing.JTextField();
         buttonEditar3 = new BottonEditar.buttonEditar();
         jLabel14 = new javax.swing.JLabel();
-        txt_buscar2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        cboIdAsigAlumno = new javax.swing.JComboBox<>();
+        cboIdAsigNota = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -77,14 +77,6 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel10.setText("DEL ALUMNO");
-
-        txt_buscar.setBackground(new java.awt.Color(227, 227, 227));
-        txt_buscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txt_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_buscarActionPerformed(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lupaf.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,8 +188,8 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(buttonEditar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txt_buscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cboIdAsigNota, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(56, 56, 56))))))
                             .addComponent(jLabel4)
@@ -219,20 +211,20 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
                             .addComponent(txt_idalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_idcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_idcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cboIdAsigAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -250,9 +242,11 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cboIdAsigAlumno)
+                                        .addGap(6, 6, 6)))))
                         .addGap(38, 38, 38)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -311,9 +305,12 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_buscar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cboIdAsigNota, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -330,10 +327,6 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_buscarActionPerformed
-
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here: boton
             String id_al = new String();
@@ -342,7 +335,7 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from asignacioncursosalumnos where id_asignacion = ?");
-            pst.setString(1, txt_buscar.getText().trim());
+            pst.setString(1, cboIdAsigAlumno.getSelectedItem().toString());
 
             ResultSet rs = pst.executeQuery();
 
@@ -426,7 +419,7 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
             pst.setString(3, txt_nota3.getText().trim());
             pst.setString(4, txt_acum.getText().trim());
             pst.setString(5, txt_total.getText().trim());
-            pst.setString(6, txt_buscar.getText().trim());
+            pst.setString(6, cboIdAsigAlumno.getSelectedItem().toString());
             pst.executeUpdate();
 
             txt_idalumno.setText("");
@@ -468,7 +461,7 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         String totala  = Float.toString(total);
         txt_total.setText(totala);
             try {
-                String ID = txt_buscar.getText().trim();
+                String ID = cboIdAsigAlumno.getSelectedItem().toString();
 
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("update asignacionnota set parcial_1 = ?, parcial_2 =?, parcial_3 =?, acumulado =?,total=?  where id_asignacion = " + ID);
@@ -497,7 +490,7 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
             PreparedStatement pst = cn.prepareStatement("select * from asignacionnota where id_asignacion = ?");
-            pst.setString(1, txt_buscar2.getText().trim());
+            pst.setString(1, cboIdAsigNota.getSelectedItem().toString());
 
             ResultSet rs = pst.executeQuery();
 
@@ -517,9 +510,35 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_jLabel14MouseClicked
 
+        public void cboAsigNotas(){
+        try{
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+        PreparedStatement pst = cn.prepareStatement("select id_asignacion from asignacioncursosalumnos");
+            ResultSet rs = pst.executeQuery();
+
+            cboIdAsigAlumno.addItem("Seleccione una opción");
+            while (rs.next()) {
+                cboIdAsigAlumno.addItem(rs.getString("id_asignacion"));
+            }
+         
+        PreparedStatement pst1 = cn.prepareStatement("select id_asignacion from asignacionnota");
+            ResultSet rs1 = pst.executeQuery();
+            cboIdAsigNota.addItem("Seleccione una Opcion");
+            while(rs1.next()){
+                cboIdAsigNota.addItem(rs1.getString("id_asignacion"));
+            }
+        }
+        
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Error Al Mostrar Datos","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private BottonEditar.buttonEditar buttonEditar3;
+    private javax.swing.JComboBox<String> cboIdAsigAlumno;
+    private javax.swing.JComboBox<String> cboIdAsigNota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -539,8 +558,6 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txt_acum;
-    private javax.swing.JTextField txt_buscar;
-    private javax.swing.JTextField txt_buscar2;
     private javax.swing.JTextField txt_curso;
     private javax.swing.JTextField txt_idalumno;
     private javax.swing.JTextField txt_idcurso;
