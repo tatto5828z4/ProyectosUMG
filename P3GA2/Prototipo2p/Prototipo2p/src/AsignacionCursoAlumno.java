@@ -374,25 +374,6 @@ public class AsignacionCursoAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonG1MouseClicked
 
     private void cmbCarnteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarnteAlumnoActionPerformed
-//Nombre alumno de carnet
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select nombre_alumno from alumnoswhere carnet= ?");
-
-            pst.setString(1, cmbCarnteAlumno.getSelectedItem().toString());
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                lblNombreAlumno.setText(rs.getString("nombre_alumno"));
-            } else {
-                lblNombreAlumno.setText("");
-            }
-
-        } catch (Exception e) {            
-            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR.", "ERROR", JOptionPane.ERROR_MESSAGE);            
-        }
-
 
     }//GEN-LAST:event_cmbCarnteAlumnoActionPerformed
 
