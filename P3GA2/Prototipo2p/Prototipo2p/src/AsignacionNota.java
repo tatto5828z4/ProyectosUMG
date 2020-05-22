@@ -22,6 +22,7 @@ public class AsignacionNota extends javax.swing.JInternalFrame {
      */
     public AsignacionNota() {
         initComponents();
+        cboAsigNotas();
     }
 
     /**
