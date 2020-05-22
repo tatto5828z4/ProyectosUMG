@@ -282,7 +282,7 @@ public class MantenimientoJornadas extends javax.swing.JInternalFrame {
             txt_nombrejornada.setText("");
             txt_estadojornada.setText("");
 
-            label_status.setText("Eliminacion Exitosa");
+            JOptionPane.showMessageDialog(this, "ELIMINACION EXITOSO", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR", "ERROR",JOptionPane.ERROR_MESSAGE);
@@ -309,7 +309,7 @@ public class MantenimientoJornadas extends javax.swing.JInternalFrame {
             txt_codigojornada.setText("");
             txt_nombrejornada.setText("");
             txt_estadojornada.setText("");
-            label_status.setText("Modificacion Exitosa");
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSO", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR AL MODIFICAR ", "ERROR",JOptionPane.ERROR_MESSAGE);

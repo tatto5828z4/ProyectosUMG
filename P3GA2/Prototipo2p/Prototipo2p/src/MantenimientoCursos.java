@@ -216,7 +216,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                 txt_nombrecurso.setText(rs.getString("nombre_curso"));
                 txt_estadocurso.setText(rs.getString("estatus_curso"));
             } else {
-                label_status.setText("curso no registrado");
+                JOptionPane.showMessageDialog(this, "CURSO NO ENCONTRADO", "MENSAJE",JOptionPane.INFORMATION_MESSAGE);
             }
 
         }catch (Exception e){
