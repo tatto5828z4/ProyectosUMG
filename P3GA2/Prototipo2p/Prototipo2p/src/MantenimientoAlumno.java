@@ -245,7 +245,7 @@ public class MantenimientoAlumno extends javax.swing.JInternalFrame {
 
     private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
      //Codigo que permite consultar registros en la base de datos
-        if ( cboBuscar.getSelectedItem().toString() == "Seleccione Una Opcion"){
+        if ( cboBuscar.getSelectedItem().toString() == "Seleccione una opción"){
 
             JOptionPane.showMessageDialog(null, "NO SE PUEDE DEJAR El CAMPO VACIO");
 
