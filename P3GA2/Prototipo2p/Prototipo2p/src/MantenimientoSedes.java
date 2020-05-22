@@ -189,6 +189,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_estadosedeActionPerformed
 
+
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
         if (txt_buscar.getText().trim().isEmpty()) {
@@ -213,10 +214,11 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
+
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
-    private void btnEliminrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminrMouseClicked
+    private void btnEliminrMouseClicked(java.awt.event.MouseEvent evt) {                                        
         //Codigo que permite borrar registros en la base de datos
         if (txt_buscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SEDE A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
@@ -224,6 +226,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             try {
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("delete from sedes where codigo_sede = ?");
+
 
                 pst.setString(1, txt_buscar.getText().trim());
                 pst.executeUpdate();
@@ -238,9 +241,9 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Registro no eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_btnEliminrMouseClicked
+    }                                       
 
-    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {                                       
         //Codigo que permite actualizar registros en la base de datos
         if (txt_codigosede.getText().trim().isEmpty() || txt_nombresede.getText().trim().isEmpty()
                 || txt_estadosede.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
@@ -248,7 +251,6 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
         } else {
             try {
                 String ID = txt_buscar.getText().trim();
-
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
                 PreparedStatement pst = cn.prepareStatement("update sedes set codigo_sede = ?, nombre_sede=?, estatus_sede=?  where codigo_sede = " + ID);
 
@@ -256,18 +258,22 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
                 pst.setString(2, txt_nombresede.getText().trim());
                 pst.setString(3, txt_estadosede.getText().trim());
                 pst.executeUpdate();
-
                 txt_codigosede.setText("");
                 txt_nombresede.setText("");
                 txt_estadosede.setText("");
-
-                JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+          JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_btnEditarMouseClicked
+    } 
+     
+    private void buttonG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonG1MouseClicked
+  
+    }//GEN-LAST:event_buttonG1MouseClicked
+
+                                           
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         //Codigo que permite insertar registros en al base de datos
@@ -294,6 +300,7 @@ public class MantenimientoSedes extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btnGuardarMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

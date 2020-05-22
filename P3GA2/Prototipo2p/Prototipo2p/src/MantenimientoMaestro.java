@@ -232,6 +232,12 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_codigoActionPerformed
 
+
+    private void buttonPrueba1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPrueba1MouseClicked
+        //Codigo que permite consultar registros en la base de datos\
+        
+    }//GEN-LAST:event_buttonPrueba1MouseClicked
+
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
          if (txt_buscar.getText().trim().isEmpty()) {
@@ -262,40 +268,42 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
          }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {                                         
+
         //Codigo que permite borrar registros en la base de datos
         if (txt_buscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUN MAESTRO A ELIMINAR");
         } else {
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("delete from maestros where codigo_maestro = ?");
 
-            pst.setString(1, txt_buscar.getText().trim());
-            pst.executeUpdate();
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("delete from maestros where codigo_maestro = ?");
 
-            txt_codigo.setText("");
-            txt_nombre.setText("");
-            txt_direccion.setText("");
-            txt_telefono.setText("");
-            txt_correo.setText("");
-            txt_estado.setText("");
+                pst.setString(1, txt_buscar.getText().trim());
+                pst.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "Se elimonó el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Registro no eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
+                txt_codigo.setText("");
+                txt_nombre.setText("");
+                txt_direccion.setText("");
+                txt_telefono.setText("");
+                txt_correo.setText("");
+                txt_estado.setText("");
+
+          JOptionPane.showMessageDialog(this, "Registro eliminado.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Registro no eeliminado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    }                                            
 
-    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {                                           
         //Codigo que permite actualizar registros en la base de datos
-         if (txt_buscar.getText().trim().isEmpty() || txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
+        if (txt_buscar.getText().trim().isEmpty() || txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
                 || txt_direccion.getText().trim().isEmpty() || txt_telefono.getText().trim().isEmpty()
                 || txt_correo.getText().trim().isEmpty() || txt_estado.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS","WARNING",JOptionPane.WARNING_MESSAGE);
         } else {
-        try {
+           try {
             String ID = txt_buscar.getText().trim();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
@@ -321,9 +329,10 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
         }
          }
-    }//GEN-LAST:event_btnEditarMouseClicked
+    }                                      
 
-    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+
         //Codigo que permite insertar registros en al base de datos
         if (txt_codigo.getText().trim().isEmpty() || txt_nombre.getText().trim().isEmpty()
                 || txt_direccion.getText().trim().isEmpty() || txt_telefono.getText().trim().isEmpty()
@@ -348,12 +357,14 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
             txt_telefono.setText("");
             txt_correo.setText("");
             txt_estado.setText("");
-            JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+
+              JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en registro.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         }
-    }//GEN-LAST:event_btnGuardarMouseClicked
+    }                                       
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,6 +3,7 @@
  *
  * @author jorgi
  */
+import java.awt.event.MouseEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -44,7 +45,6 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         txt_buscar.setBackground(new java.awt.Color(227, 227, 227));
         txt_buscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
-        btnBuscar.setText("buttonPrueba1");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseClicked(evt);
@@ -107,32 +107,33 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_codseccion, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(txt_nombreseccion)
-                    .addComponent(txt_estadoseccion))
-                .addGap(0, 35, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_codseccion, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(txt_nombreseccion)
+                            .addComponent(txt_estadoseccion)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,111 +188,125 @@ public class MantenimientoSecciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreseccionActionPerformed
 
+
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         //Codigo que permite consultar registros en la base de datos
         if (txt_buscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION DE BUSQUEDA", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
-            pst.setString(1, txt_buscar.getText().trim());
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("select * from secciones where codigo_seccion = ?");
+                pst.setString(1, txt_buscar.getText().trim());
 
-            ResultSet rs = pst.executeQuery();
+                ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
-                txt_codseccion.setText(rs.getString("codigo_seccion"));
-                txt_nombreseccion.setText(rs.getString("nombre_seccion"));
-                txt_estadoseccion.setText(rs.getString("estatus_seccion"));
+                if (rs.next()) {
+                    txt_codseccion.setText(rs.getString("codigo_seccion"));
+                    txt_nombreseccion.setText(rs.getString("nombre_seccion"));
+                    txt_estadoseccion.setText(rs.getString("estatus_seccion"));
 
-                JOptionPane.showMessageDialog(this, "Se encontró el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-            } else {
+                    JOptionPane.showMessageDialog(this, "Se encontró el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-            }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Registro no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            }
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        //Codigo que permite borrar registros en la base de datos
-        if (txt_buscar.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
-        } else {
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
 
-            pst.setString(1, txt_buscar.getText().trim());
-            pst.executeUpdate();
+    private void buttonEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEditar1MouseClicked
 
-            txt_codseccion.setText("");
-            txt_nombreseccion.setText("");
-            txt_estadoseccion.setText("");
-
-            JOptionPane.showMessageDialog(this, "Se elimonó el registro.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Registro no eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    }//GEN-LAST:event_buttonEditar1MouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         //Codigo que permite actualizar registros en la base de datos
-          if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
+        if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
                 || txt_estadoseccion.getText().trim().isEmpty() || txt_buscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
-        try {
-            String ID = txt_buscar.getText().trim();
+            try {
+                String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("update secciones set codigo_seccion = ?, nombre_seccion=?, estatus_seccion=?  where codigo_seccion = " + ID);
 
-            pst.setString(1, txt_codseccion.getText().trim());
-            pst.setString(2, txt_nombreseccion.getText().trim());
-            pst.setString(3, txt_estadoseccion.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_codseccion.getText().trim());
+                pst.setString(2, txt_nombreseccion.getText().trim());
+                pst.setString(3, txt_estadoseccion.getText().trim());
+                pst.executeUpdate();
 
-            txt_codseccion.setText("");
-            txt_nombreseccion.setText("");
-            txt_estadoseccion.setText("");
+                txt_codseccion.setText("");
+                txt_nombreseccion.setText("");
+                txt_estadoseccion.setText("");
 
-            JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Modificación exitosa.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error en modificación.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-          }
     }//GEN-LAST:event_btnEditarMouseClicked
 
-    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+     //Codigo que permite borrar registros en la base de datos
+        if (txt_buscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO SE INGRESO NINGUNA SECCION A ELIMINAR", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("delete from secciones where codigo_seccion = ?");
+
+                pst.setString(1, txt_buscar.getText().trim());
+                pst.executeUpdate();
+
+                txt_codseccion.setText("");
+                txt_nombreseccion.setText("");
+                txt_estadoseccion.setText("");
+
+             JOptionPane.showMessageDialog(this, "Registro eliminado.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Registro no eeliminado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+        }
+                                            
+
+      
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {
+
         //Codigo que permite insertar registros en al base de datos
         if (txt_codseccion.getText().trim().isEmpty() || txt_nombreseccion.getText().trim().isEmpty()
                 || txt_estadoseccion.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDE HABER CAMPOS VACIOS", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
-        try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
-            PreparedStatement pst = cn.prepareStatement("insert into secciones values(?,?,?)");
+            try {
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/siu", "root", "jorgito5828H");
+                PreparedStatement pst = cn.prepareStatement("insert into secciones values(?,?,?)");
 
-            pst.setString(1, txt_codseccion.getText().trim());
-            pst.setString(2, txt_nombreseccion.getText().trim());
-            pst.setString(3, txt_estadoseccion.getText().trim());
-            pst.executeUpdate();
+                pst.setString(1, txt_codseccion.getText().trim());
+                pst.setString(2, txt_nombreseccion.getText().trim());
+                pst.setString(3, txt_estadoseccion.getText().trim());
+                pst.executeUpdate();
 
-            txt_codseccion.setText("");
-            txt_nombreseccion.setText("");
-            txt_estadoseccion.setText("");
-            JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error en registro.", "Error", JOptionPane.ERROR_MESSAGE);
+                txt_codseccion.setText("");
+                txt_nombreseccion.setText("");
+                txt_estadoseccion.setText("");
+
+                JOptionPane.showMessageDialog(this, "Registro exitoso.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error en registro.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        }
-    }//GEN-LAST:event_btnGuardarMouseClicked
+    }
+
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
